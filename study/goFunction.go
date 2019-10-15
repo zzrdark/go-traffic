@@ -5,15 +5,17 @@ import (
 	"time"
 )
 
-var message   = make ( chan string )
+var message = make(chan string)
 
-func sample(){
+const str = 1
+
+func sample() {
 	message <- "hello"
 }
 
-func sample1(){
+func sample1() {
 	time.Sleep(time.Second * 2)
-	var str = <- message
+	var str = <-message
 	str = str + " too"
 	message <- str
 }
